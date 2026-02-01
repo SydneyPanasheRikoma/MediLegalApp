@@ -1,0 +1,663 @@
+/* ============================================
+   MediLegal AI - Responsive Chatbot Styles
+   ============================================ */
+
+/* Root Variables for Easy Customization */
+:root {
+    --primary-blue: #0a2342;
+    --light-blue: #eef3fa;
+    --dark-text: #101214;
+    --light-text: #4a5568;
+    --border-color: #d6deea;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --white: #ffffff;
+    --shadow: 0 4px 14px rgba(10, 35, 66, 0.12);
+    --shadow-hover: 0 6px 18px rgba(10, 35, 66, 0.18);
+    --transition: all 0.25s ease;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f7f9fc 0%, #e6edf7 100%);
+    color: var(--dark-text);
+    line-height: 1.7;
+    min-height: 100vh;
+    font-size: 18px;
+}
+
+/* App Shell */
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--white);
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--white);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-mark {
+    font-size: 2rem;
+}
+
+.brand-title {
+    font-size: 1.6rem;
+    margin: 0;
+    color: var(--primary-blue);
+}
+
+.change-role-btn {
+    padding: 0.6rem 1.2rem;
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.change-role-btn:hover {
+    background-color: var(--light-blue);
+}
+    overflow: hidden;
+}
+
+.role-panel,
+.chat-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.role-panel {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #f9fbff;
+}
+
+.chat-panel {
+    padding: 1.2rem 2rem 1.8rem;
+    gap: 1rem;
+}
+
+/* ============================================
+   MAIN LAYOUT
+   ============================================ */
+
+/* ============================================
+   ROLE SELECTION
+   ============================================ */
+
+.role-panel h2 {
+    font-size: 2.1rem;
+    margin-bottom: 0.6rem;
+    color: var(--primary-blue);
+}
+
+.role-description {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-bottom: 2.4rem;
+}
+
+.role-buttons {
+    display: flex;
+    gap: 2.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.role-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 2.4rem;
+    min-width: 220px;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.role-btn:hover {
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.role-btn.active {
+    background: var(--light-blue);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(10, 35, 66, 0.12);
+}
+
+.role-icon {
+    font-size: 2.9rem;
+}
+
+.role-label {
+    display: block;
+}
+
+/* ============================================
+   CHAT SECTION
+   ============================================ */
+
+.chat-panel.hidden {
+    display: none;
+}
+
+/* Chat Window */
+.chat-window {
+    flex: 1;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    min-height: 0;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: #fafcff;
+}
+
+/* Message Styles */
+.message {
+    display: flex;
+    gap: 0.75rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* User Message */
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.user .message-content {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-radius: 12px 12px 0 12px;
+    max-width: 80%;
+}
+
+/* Chatbot Message */
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.bot .message-avatar {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.message.bot .message-content {
+    background-color: var(--light-blue);
+    color: var(--dark-text);
+    border-radius: 12px 12px 12px 0;
+    max-width: 85%;
+}
+
+.message-content {
+    padding: 1.2rem;
+    word-wrap: break-word;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Structured Bot Response Styles */
+.bot-response {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.response-section {
+    padding: 0.8rem;
+    border-left: 3px solid var(--primary-blue);
+    background-color: rgba(0, 102, 204, 0.03);
+    border-radius: 4px;
+}
+
+.response-section-title {
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.response-section-content {
+    color: var(--dark-text);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.risk-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+
+.risk-badge.low {
+    background-color: #e6edf7;
+    color: var(--primary-blue);
+    border: 1px solid #cfd9ea;
+}
+
+.risk-badge.medium {
+    background-color: #eef3fa;
+    color: var(--primary-blue);
+    border: 1px solid #d6deea;
+}
+
+.risk-badge.high {
+    background-color: #e1e9f6;
+    color: var(--primary-blue);
+    border: 1px solid #c7d2e8;
+}
+
+.list-item {
+    margin: 0.3rem 0 0.3rem 1.2rem;
+    list-style-type: none;
+    position: relative;
+}
+
+.list-item::before {
+    content: "✓";
+    position: absolute;
+    left: -1.2rem;
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.message.bot .message-content .list-item::before {
+    content: "✓";
+}
+
+.message.bot .message-content .response-section {
+    background-color: rgba(10, 35, 66, 0.03);
+    border-left-color: var(--primary-blue);
+}
+
+/* ============================================
+   CHAT INPUT AREA
+   ============================================ */
+
+.composer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #f7f9fc;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 1.1rem 1.2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+}
+
+.chat-input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.chat-input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.send-btn {
+    padding: 1.1rem 1.8rem;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.send-btn:hover:not(:disabled) {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.send-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.send-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.send-icon {
+    font-size: 1rem;
+}
+
+.yes-no-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.yes-btn,
+.no-btn {
+    padding: 0.9rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.yes-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.yes-btn:hover:not(:disabled) {
+    background-color: #091f3b;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.no-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.no-btn:hover:not(:disabled) {
+    background-color: #091f3b;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.yes-btn:disabled,
+.no-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.clear-btn {
+    align-self: flex-end;
+    padding: 0.6rem 1.2rem;
+    background-color: transparent;
+    color: var(--light-text);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.clear-btn:hover {
+    background-color: #eef3fa;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* ============================================
+   ROLE INFO
+   ============================================ */
+
+.role-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--light-blue);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.current-role {
+    font-weight: 500;
+}
+
+.current-role strong {
+    color: var(--primary-blue);
+}
+
+.change-role-btn {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.change-role-btn:hover {
+    background-color: var(--light-blue);
+    box-shadow: var(--shadow);
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+.messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: var(--light-text);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 1.5rem 1rem;
+    }
+
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-content p {
+        font-size: 0.85rem;
+    }
+
+    .disclaimer-banner {
+        padding: 0.8rem 1rem;
+    }
+
+    .disclaimer-content {
+        gap: 0.75rem;
+    }
+
+    .disclaimer-text {
+        font-size: 0.8rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .role-buttons {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .role-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .message.user .message-content {
+        max-width: 85%;
+    }
+
+    .message.bot .message-content {
+        max-width: 85%;
+    }
+
+    .input-wrapper {
+        flex-direction: column;
+    }
+
+    .send-btn {
+        width: 100%;
+    }
+
+    .role-info {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+
+    .change-role-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+
+    .header-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .header-content p {
+        font-size: 0.75rem;
+    }
+
+    .role-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .role-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .message.user .message-content,
+    .message.bot .message-content {
+        max-width: 90%;
+    }
+
+    .messages-container {
+        padding: 1rem 0.75rem;
+    }
+
+    .message-content {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .response-section {
+        padding: 0.6rem;
+    }
+
+    .response-section-title {
+        font-size: 0.8rem;
+    }
+
+    .response-section-content {
+        font-size: 0.75rem;
+    }
+}

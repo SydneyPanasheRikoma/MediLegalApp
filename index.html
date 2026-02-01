@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLegal AI - Medical-Legal Guidance</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="top-bar">
+            <div class="brand">
+                <span class="brand-mark">🏥</span>
+                <div>
+                    <h1 class="brand-title">MediLegal AI</h1>
+                    <p class="brand-subtitle">Clear medical-legal guidance in yes/no steps</p>
+                </div>
+            </div>
+            <div class="top-bar-actions">
+                <div class="role-pill">Role: <strong id="currentRole"></strong></div>
+                <button id="changeRoleBtn" class="change-role-btn">Change Role</button>
+            </div>
+        </header>
+
+        <div class="banner">
+            <span class="banner-icon">⚠️</span>
+            <p class="banner-text">Legal information only, not legal advice. Consult a qualified professional for your specific situation.</p>
+        </div>
+
+        <main class="chat-layout">
+            <section id="roleSection" class="role-panel">
+                <h2>Select your role</h2>
+                <p class="role-description">We tailor the guidance based on who you are.</p>
+                <div class="role-buttons">
+                    <button class="role-btn doctor-btn" data-role="doctor">
+                        <span class="role-icon">👨‍⚕️</span>
+                        <span class="role-label">I am a Doctor</span>
+                    </button>
+                    <button class="role-btn patient-btn" data-role="patient">
+                        <span class="role-icon">👤</span>
+                        <span class="role-label">I am a Patient</span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="chatSection" class="chat-panel hidden">
+                <div class="chat-window">
+                    <div id="messagesContainer" class="messages-container">
+                        <!-- Messages will be added here dynamically -->
+                    </div>
+                </div>
+
+                <div class="composer">
+                    <div class="input-wrapper">
+                        <input
+                            type="text"
+                            id="userInput"
+                            class="chat-input"
+                            placeholder="Type yes or no..."
+                            disabled
+                        >
+                        <button id="sendBtn" class="send-btn" disabled>
+                            <span>Send</span>
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                    <div class="yes-no-buttons">
+                        <button id="yesBtn" class="yes-btn" disabled>Yes</button>
+                        <button id="noBtn" class="no-btn" disabled>No</button>
+                    </div>
+                    <button id="clearBtn" class="clear-btn">Clear Chat</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
